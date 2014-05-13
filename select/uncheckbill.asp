@@ -8,7 +8,7 @@ s_billcode = Request("billcode")
 sqlcheck = "select count(billcode) as c from t_bill where planbillcode = '"& s_billcode &"'"
 set rscheck = Server.CreateObject("adodb.recordset")
 rscheck.open sqlcheck, conn, 1, 1
-if rscheck("c") > 0 then
+if CInt(rscheck("c")) > 0 then
 	Response.Write s_billcode & ":存在相关单据"
 	Response.End()
 end if
